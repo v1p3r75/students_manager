@@ -25,8 +25,8 @@ void saveStudents() {
 
         StudentType studentData;
 
-        printf(" Entrer le nom et prenoms de l'etudiant n*%d : ", student + 1);
-        scanf("%s %s", &studentData.lastname, &studentData.firstname);
+        printf(" Entrer le nom et prenoms de l'etudiant n°%d : ", student + 1);
+        scanf("%s %s", studentData.lastname, studentData.firstname);
 
         for (int subject = 0; subject < NB_SUBJECTS; subject++){
 
@@ -98,7 +98,7 @@ void searchStudent() {
     char searchName[30]; int result = 0;
 
     printf(" Entrer seulement le nom de l'etudiant : ");
-    scanf("%s", &searchName);
+    scanf("%s", searchName);
 
 
     for (int z = 0; z < nb_total_students; z++)
@@ -137,31 +137,36 @@ int writeResultInFile () {
 
     FILE *file = fopen("../data/students_informations.txt", "w");
 
-    if(file == NULL) {
-        colorText("Erreur rencontree lors de l'enregistrement de l'etudiant dans le fichier \n", 2);
+    if(file != NULL) {
+
+        sortArray();
+
+
+        for (int student = 0; student < nb_total_students; student++) {
+
+            fprintf(file, "%s %s ", allStudents[student].lastname, allStudents[student].firstname);
+
+            for(int matiere = 0; matiere < NB_SUBJECTS; matiere++) {
+
+                for( int note = 0; note < NB_SUBJECT_NOTE; note++) {
+                    fprintf(file, "%.2f:", allStudents[student].subject[matiere][note]);
+                }
+                fprintf(file, "%.2f ", allStudents[student].moyenneBySubject[matiere]);
+            }
+
+
+            fprintf(file, "%.2f %s\n", allStudents[student].moyTotal, allStudents[student].mention);
+        } 
+    
+        fclose(file);
+
+        return 0;
+        
     }
 
-    sortArray();
-
-
-    for (int student = 0; student < nb_total_students; student++) {
-
-        fprintf(file, "%s %s ", allStudents[student].lastname, allStudents[student].firstname);
-
-        for(int matiere = 0; matiere < NB_SUBJECTS; matiere++) {
-
-            for( int note = 0; note < NB_SUBJECT_NOTE; note++) {
-                fprintf(file, "%.2f:", allStudents[student].subject[matiere][note]);
-            }
-            fprintf(file, "%.2f ", allStudents[student].moyenneBySubject[matiere]);
-        }
-
-
-        fprintf(file, "%.2f %s\n", allStudents[student].moyTotal, allStudents[student].mention);
-    } 
     
-    fclose(file);
-    
+    colorText("Erreur rencontree lors de l'enregistrement de l'etudiant dans le fichier \n", 2);
+
     return 0;
 
 }
@@ -203,7 +208,7 @@ void printStudents() {
     
     char searchName[30]; int result = 0;
     printf("Entrer seulement le nom de l'etudiant : ");
-    scanf("%s", &searchName);
+    scanf("%s", searchName);
 
 
     for (int z = 0; z < nb_total_students; z++)

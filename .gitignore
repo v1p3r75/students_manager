@@ -1,5 +1,3 @@
 .vscode
-a.out
-main
-output/students_main.exe
+output
 students_main

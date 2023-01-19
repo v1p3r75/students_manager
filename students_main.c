@@ -7,7 +7,6 @@
 */
 
 #include <stdio.h>
-#include <stdlib.h>
 
 #include "./cores/students_functions.h"
 
@@ -16,7 +15,6 @@ int main()
 {
     int choice;
 
-    system("cls");
     showBanner();
 
      do {
