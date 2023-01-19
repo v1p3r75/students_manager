@@ -21,6 +21,7 @@ typedef struct
     float moyenneBySubject[NB_SUBJECTS];
     float moyTotal;
     char mention[20];
+    int range;
 
 } StudentType;
 
@@ -39,6 +40,8 @@ StudentType fillStudentAttributes(StudentType);
 int writeResultInFile();
 
 void searchStudent();
+
+void setRange();
 
 void printStudents();
 

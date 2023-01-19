@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 
-#include "./cores/students_functions.h"
+#include "./cores/students_functions.c"
 
 int main()
 

@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "students_declaration.h"
-#include "students_helpers.h"
+#include "students_helpers.c"
 
 char * getSubject(int subject) {
 
@@ -41,8 +41,11 @@ void saveStudents() {
 
         allStudents[student] = studentData;
 
+
         
     }
+
+    setRange();
 
     printf("\n \e[0;32mLa Moyenne la plus faible de classe est : %.2f et la plus forte est : %.2f\e[0m\n\n", getStat(1), getStat(2));
     
@@ -50,6 +53,21 @@ void saveStudents() {
 
 
     
+}
+
+void setRange() {
+
+    for(int i = 0; i < nb_total_students; i++) {
+        
+        for (int j = 0; j < nb_total_students; j ++) {
+            
+            if(allStudents[j].moyTotal > allStudents[i].moyTotal) {
+
+                allStudents[i].range++;
+            }
+        }
+    }
+
 }
 
 StudentType fillStudentAttributes(StudentType data) {
@@ -66,7 +84,10 @@ StudentType fillStudentAttributes(StudentType data) {
         data.moyenneBySubject[i] = moySubject;
         total += moySubject;
     }
+    
     moyTotal = total / NB_SUBJECTS;
+
+    data.range = 1;
 
     data.moyTotal = moyTotal;
     
@@ -117,7 +138,7 @@ void searchStudent() {
                 
             }
             symbole(15, "--");
-            printf("\n\nMoyenne Generale : %.2f \t Rang : %d \n\n", allStudents[z].moyTotal, 1);
+            printf("\n\nMoyenne Generale : %.2f \t Rang : %de \n\n", allStudents[z].moyTotal, allStudents[z].range);
             symbole(30, "o");
             printf("\e[0m");
 
@@ -156,16 +177,18 @@ int writeResultInFile () {
 
 
             fprintf(file, "%.2f %s\n", allStudents[student].moyTotal, allStudents[student].mention);
-        } 
+        }
     
         fclose(file);
+
+        showStat();
 
         return 0;
         
     }
 
     
-    colorText("Erreur rencontree lors de l'enregistrement de l'etudiant dans le fichier \n", 2);
+    colorText("Erreur rencontree lors de l'ouverture du fichier.\n", 2);
 
     return 0;
 
@@ -235,7 +258,7 @@ void printStudents() {
                 
             }
             symbole(33, "--");
-            printf("\no Moyenne Generale : %.2f \no Rang : %d \n", allStudents[z].moyTotal, 1);
+            printf("\no Moyenne Generale : %.2f \no Rang : %de\n", allStudents[z].moyTotal, allStudents[z].range);
             printf("o Mention : %s \t\t\t\tDecision : %s\n", allStudents[z].mention, allStudents[z].moyTotal < 10 ? "Redouble" : "Admis(e)");
             symbole(66, "o");
             printf("\e[0m");
