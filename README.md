@@ -12,13 +12,18 @@ Le programme est exécuté à partir de la ligne de commande. Il utilise un menu
     3 - Afficher la liste de tous les étudiants
     4 - Afficher les statistiques sur les étudiants enregistrés
     0 - Quitter le programme
-L'utilisateur doit entrer le numéro de l'option souhaitée dans la console pour effectuer l'opération correspondante. Le programme utilise la bibliothèque standard du langage C pour afficher les résultats dans la console.
+L'utilisateur doit entrer le numéro de l'option souhaitée dans la console pour effectuer l'opération correspondante. 
 
 ## Configuration requise
-Le programme nécessite une installation du compilateur C pour fonctionner. Il utilise également des fichiers d'en-tête et des fichiers de fonctions définis dans le dossier "cores". Ces fichiers doivent être placés dans le même répertoire que le programme principal.
+Le programme nécessite une installation du compilateur C pour fonctionner. Il utilise également des fichiers d'en-tête et des fichiers de fonctions définis dans le dossier "cores" à savoir :
+
+    1 - students_declaration.h : Qui contient les la déclaration des variables et constantes. Ainsi que la définition de tous les fonctions.
+    2 - students_functions.h : Qui contient les fonctions nécessaire pour le bon fonctionnement du programme.
+    3 - students_helpers.h : Qui contient quelques fonctions d'aide supplémentaires (couleurs, symboles, ...).     
 
 ## Licence
 Le programme est sous licence MIT, ce qui signifie que les utilisateurs ont le droit de l'utiliser, de le modifier et de le distribuer à condition de conserver la mention de l'auteur et de la licence.
 
 ## Source & Documentation
 Le code source du programme et la documentation sont disponibles sur GitHub à l'adresse suivante : https://github.com/v1p3r75/students_manager
+
