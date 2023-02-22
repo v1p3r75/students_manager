@@ -135,7 +135,7 @@ void searchStudent() {
 
 int writeResultInFile () {
 
-    FILE *file = fopen("./data/students_informations.txt", "w");
+    FILE *file = fopen("../data/students_informations.txt", "w");
 
     if(file == NULL) {
         colorText("Erreur rencontree lors de l'enregistrement de l'etudiant dans le fichier \n", 2);
