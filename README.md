@@ -18,8 +18,8 @@ L'utilisateur doit entrer le numéro de l'option souhaitée dans la console pour
 Le programme nécessite une installation du compilateur C pour fonctionner. Il utilise également des fichiers d'en-tête et des fichiers de fonctions définis dans le dossier "cores" à savoir :
 
     1 - students_declaration.h : Qui contient les la déclaration des variables et constantes. Ainsi que la définition de tous les fonctions.
-    2 - students_functions.h : Qui contient les fonctions nécessaire pour le bon fonctionnement du programme.
-    3 - students_helpers.h : Qui contient quelques fonctions d'aide supplémentaires (couleurs, symboles, ...).     
+    2 - students_functions.c : Qui contient les fonctions nécessaire pour le bon fonctionnement du programme.
+    3 - students_helpers.c : Qui contient quelques fonctions d'aide supplémentaires (couleurs, symboles, ...).     
 
 ## Licence
 Le programme est sous licence MIT, ce qui signifie que les utilisateurs ont le droit de l'utiliser, de le modifier et de le distribuer à condition de conserver la mention de l'auteur et de la licence.
